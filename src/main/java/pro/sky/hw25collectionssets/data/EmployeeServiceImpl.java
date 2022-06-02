@@ -51,20 +51,17 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     public Employee findEmployee(String firstName, String lastName){
         Employee e = new Employee(firstName, lastName);
-        for (int i = 0; i < employees.size(); i++) {
-            if(employees.get(i).equals(e))
-                return employees.get(i);
+        for (Employee employee : employees) {
+            if (employee.equals(e))
+                return employee;
         }
         throw new EmployeeNotFoundException(errors[0]);
     }
 
-    public String allEmployeeList(){
-        StringBuilder str = new StringBuilder();
-        for (Employee e : employees) {
-            str.append(e.toString());
-            str.append("<br>");
-        }
-        return str.toString();
+    public Employee[] allEmployeeList(){
+        Employee[] array = new Employee[employees.size()];
+        employees.toArray(array);
+        return array;
     }
 
 }

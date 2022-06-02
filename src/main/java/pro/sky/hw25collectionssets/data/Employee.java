@@ -1,12 +1,11 @@
 package pro.sky.hw25collectionssets.data;
 
-import java.util.Formatter;
 import java.util.Objects;
 
 public class Employee {
 
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Employee(String firstName, String lastName) {
 
@@ -37,10 +36,7 @@ public class Employee {
         if(obj.getClass() != this.getClass())
             return false;
         Employee e = (Employee) obj;
-        if( !e.getFirstName().equals(this.firstName) || !e.getLastName().equals(this.lastName))
-            return false;
-        else
-            return true;
+        return e.getFirstName().equals(this.firstName) && e.getLastName().equals(this.lastName);
 
     }
 
